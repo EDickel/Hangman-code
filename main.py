@@ -107,40 +107,114 @@ def iniciar_jogo():
     letrasusad = Label(tela, text="Letras utilizadas: ", bg='pink', fg='black')
     letrasusad.pack(pady=10)
 
+def remove_forca():
+    global forca
+    if forca is not None:
+        for widget in tela.winfo_children():
+            if widget.cget("text").strip() == forca.cget("text").strip():
+                widget.destroy()
+
+forca = None
 def forcaforma(tentativas):
+    global forca
+
+    # TENTATIVA 9 ----------------------------------------
     if tentativas == 9:
         forca = Label(tela, text='''
-                            
-                            
-                            
-                            
-                          ===''', bg='pink', fg='black')
+                    
+                    
+                    
+                    
+                  ===''', bg='pink', fg='black')
         forca.pack(pady=20)
+
+    # TENTATIVA 8 ----------------------------------------
     elif tentativas == 8:
+        remove_forca()
         forca = Label(tela, text='''
-                            
-                           |
-                           |
-                           |
-                          ===''', bg='pink', fg='black')
+                    
+                   |
+                   |
+                   |
+                  ===''', bg='pink', fg='black')
         forca.pack(pady=20)
-        forca.destroy()
-        if tentativas == 7:
-            forca = Label(tela, text='''
-                           +---+
-                               |
-                               |
-                               |
-                              ===''', bg='pink', fg='black')
-            forca.pack(pady=20)
-        if tentativas == 6:
-            forca = Label(tela, text='''
-                           +---+
-                               |
-                               |
-                               |
-                              ===''', bg='pink', fg='black')
-            forca.pack(pady=20)
+        
+    # TENTATIVA 7 ----------------------------------------
+    elif tentativas == 7:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+                   |
+                   |
+                   |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+        
+    # TENTATIVA 6 ----------------------------------------
+    elif tentativas == 6:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+               O   |
+                   |
+                   |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+        
+    # TENTATIVA 5 ----------------------------------------
+    elif tentativas == 5:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+               O   |
+               |   |
+                   |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+
+    # TENTATIVA 4 ----------------------------------------
+    elif tentativas == 4:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+               O   |
+              /|   |
+                   |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+
+    # TENTATIVA 3 ----------------------------------------
+    elif tentativas == 3:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+               O   |
+              /|\\  |
+                   |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+
+    # TENTATIVA 2 ----------------------------------------
+    elif tentativas == 2:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+               O   |
+              /|\\  |
+              /    |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+
+    # TENTATIVA 1 ----------------------------------------
+    elif tentativas == 1:
+        remove_forca()
+        forca = Label(tela, text='''
+               +---+
+               O   |
+              /|\\  |
+              / \\  |
+                  ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
 
 # Inicialização da janela principal
 tela = Tk()
