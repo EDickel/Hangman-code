@@ -71,9 +71,11 @@ def iniciar_jogo():
                 if palavSorteada[k] == n:
                     esconl[k] = n
             resultado.config(text=f"Boa! A letra '{n}' está na palavra.")
+            forcaforma(chances)
         else:
             chances -= 1
             resultado.config(text=f"A letra '{n}' não está na palavra. Você ainda tem {chances} chances.")
+            forcaforma(chances)
 
         escon.config(text=''.join(esconl))
 
@@ -85,6 +87,9 @@ def iniciar_jogo():
             resultado.config(text=f"Você perdeu! A palavra era: {palavSorteada}")
             partidaOFF = True
             botao.config(state=DISABLED)
+        if partidaOFF:
+            botaoReiniciar = Button(tela, text="recomeçar", bg='pink', fg='white', command=iniciar_jogo)
+            botaoReiniciar.pack(pady=20)
 
     # Widgets do jogo da forca
     escon = Label(tela, text=''.join(esconl), bg='pink', fg='black', font=('Helvetica', 24))
@@ -101,6 +106,41 @@ def iniciar_jogo():
 
     letrasusad = Label(tela, text="Letras utilizadas: ", bg='pink', fg='black')
     letrasusad.pack(pady=10)
+
+def forcaforma(tentativas):
+    if tentativas == 9:
+        forca = Label(tela, text='''
+                            
+                            
+                            
+                            
+                          ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+    elif tentativas == 8:
+        forca = Label(tela, text='''
+                            
+                           |
+                           |
+                           |
+                          ===''', bg='pink', fg='black')
+        forca.pack(pady=20)
+        forca.destroy()
+        if tentativas == 7:
+            forca = Label(tela, text='''
+                           +---+
+                               |
+                               |
+                               |
+                              ===''', bg='pink', fg='black')
+            forca.pack(pady=20)
+        if tentativas == 6:
+            forca = Label(tela, text='''
+                           +---+
+                               |
+                               |
+                               |
+                              ===''', bg='pink', fg='black')
+            forca.pack(pady=20)
 
 # Inicialização da janela principal
 tela = Tk()
